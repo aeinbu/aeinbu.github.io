@@ -1,15 +1,9 @@
-body {
-	font-family: sans-serif;
-	width: 100%;
-}
-
 body,
 section,
 article {
 	margin: 0;
 	padding: 0;
 }
-
 
 h1,
 h2 {
@@ -18,7 +12,7 @@ h2 {
 }
 
 h1 {
-	font-size: 4em;
+	font-size: 6em;
 }
 
 blockquote,
@@ -48,36 +42,33 @@ blockquote:after {
 	vertical-align: -0.4em;
 }
 
+body {
+	font-family: sans-serif;
+}
+
 .main {
 	background: #f8f8f8;
-	margin: auto;
-	width: 930px;
-	padding: 20px;
-	overflow: hidden;
 }
 
-.three-columns {
-	column-count: 3;
-	column-gap: 14px;
+section.intro{
+	margin-bottom: 2em;
 }
 
-.block {
-	margin: 7px 0;
-	display: inline-block;
-	width: 300px;
-	box-sizing: border-box;
+.signature {
+	text-align: right;
+	font-style: italic;
 }
 
 
-.block.border {
+
+.border {
 	border: 2px solid lightcoral;
 	padding: 10px;
 }
 
 
-.block.highlight {
+.highlight {
 	background-color: coral;
-	/* font-size: 1.6em; */
 	padding: 10px;
 }
 

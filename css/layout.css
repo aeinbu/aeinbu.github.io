@@ -1,0 +1,22 @@
+body {
+	width: 100%;
+}
+
+.main {
+	margin: auto;
+	width: 930px;
+	padding: 20px;
+	overflow: hidden;
+}
+
+.three-columns {
+	column-count: 3;
+	column-gap: 14px;
+}
+
+.three-columns>*{
+	margin: 7px 0;
+	display: inline-block;
+	width: 300px;
+	box-sizing: border-box;
+}
