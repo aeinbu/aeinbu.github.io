@@ -1,6 +1,8 @@
 # aeinbu.github.io
 
-You can view the website at http://aeinbu.github.io
+A responsive website template, with clear seperation of layout and styling (seperate ccs files).
+
+You can view the website at http://aeinbu.github.io.
 
 ## Install development webserver
 ```bash

@@ -1,3 +1,7 @@
+body {
+	font-family: sans-serif;
+}
+
 body,
 section,
 article {
@@ -14,6 +18,77 @@ h2 {
 h1 {
 	font-size: 6em;
 }
+
+
+footer {
+	text-align: center;
+	font-size: smaller;
+}
+
+.main {
+	background: #f8f8f8;
+}
+
+.no-columns {
+	margin-bottom: 10px;
+}
+
+.signature {
+	text-align: right;
+	font-style: italic;
+}
+
+/* box decoration rules */
+
+.border {
+	border: 2px solid lightcoral;
+	padding: 10px;
+}
+
+
+.highlight {
+	background-color: coral;
+	padding: 10px;
+}
+
+
+
+/* picframe rules*/
+
+img {
+	vertical-align: bottom;
+}
+
+.picframe {
+	position: relative;
+}
+
+.picframe>img {
+	width: 100%;
+}
+
+.picframe>.caption {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: .3em;
+	overflow: hidden;
+	color: white;
+	background: hsla(0, 0%, 0%, .4);
+	/* color: transparent; */
+	/* background: transparent; */
+	transition: 1s;
+	box-sizing: border-box;
+}
+
+.picframe:hover>.caption {
+	/* transition: .3s; */
+	color: white;
+	background: hsla(0, 0%, 0%, .4);
+}
+
+
+/* blockquote rules */
 
 blockquote,
 q {
@@ -40,68 +115,4 @@ blockquote:after {
 	font-size: 3em;
 	line-height: 0;
 	vertical-align: -0.4em;
-}
-
-body {
-	font-family: sans-serif;
-}
-
-.main {
-	background: #f8f8f8;
-}
-
-section.intro{
-	margin-bottom: 2em;
-}
-
-.signature {
-	text-align: right;
-	font-style: italic;
-}
-
-
-
-.border {
-	border: 2px solid lightcoral;
-	padding: 10px;
-}
-
-
-.highlight {
-	background-color: coral;
-	padding: 10px;
-}
-
-
-img {
-	vertical-align: bottom;
-}
-
-
-.picframe {
-	position: relative;
-}
-
-.picframe>img {
-	width: 100%;
-}
-
-.picframe>.caption {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	padding: .3em;
-	overflow: hidden;
-	color: white;
-	background: hsla(0, 0%, 0%, .4);
-	/* color: transparent; */
-	/* background: transparent; */
-	transition: 1s;
-	box-sizing: border-box;
-}
-
-.picframe:hover>.caption {
-	transition: .3s;
-	color: white;
-	background: hsla(0, 0%, 0%, .4);
 }
