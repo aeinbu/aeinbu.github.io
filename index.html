@@ -92,11 +92,50 @@
 				</p>
 			</article>
 
+			<article class="border">
+				<h2>Commenting Test</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe voluptas incidunt atque. Quod accusamus id ducimus? Corrupti, dolorem reiciendis similique vitae repellendus unde culpa blanditiis illo voluptatum, ipsa eum?</p>
+				<comment-widget data-article-id="1"></comment-widget>
+			</article>
+
+			<article class="border">
+				<h2>Commenting Example Layout</h2>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe voluptas incidunt atque. Quod accusamus id ducimus? Corrupti, dolorem reiciendis similique vitae repellendus unde culpa blanditiis illo voluptatum, ipsa eum?</p>
+				<section class="comments">
+					<article>
+						<p>
+							What a thoughtfull piece of lorem ipsum, that was. Thank you for sharing!
+						</p>
+						<div class="signature">-Peter Pan</div>
+					</article>
+					<article>
+						<p>
+							I just love commenting on websites like this. Even though I have nothing interresting to say, I say it anyway.
+						</p>
+						<div class="signature">-Donald Duck</div>
+					</article>
+					<article>
+						<p contenteditable>Your comment here!</p>
+						<div class="signature">
+							- <span contenteditable>Your name</span>
+						</div>
+						<button style="width: 100%">Submit</button>
+
+					</article>
+
+				</section>
+			</article>
+
+			<div class="github-widget" data-username="aeinbu"></div>
+
 		</section>
 	</div>
 	<footer class="container">
 		Copyright &copy; 2018 Arjan Einbu.
 	</footer>
+	<script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.14/webcomponents-hi.js"></script>
+	<link rel="import" href="comment-widget/widget.html">
 </body>
 
 </html>

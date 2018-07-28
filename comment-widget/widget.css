@@ -1,0 +1,29 @@
+.comment-widget-container {
+	border-top: thin dashed lightgray;
+	padding-top: 7px;
+	font-size: smaller;
+}
+
+.signature {
+	margin-top: 0;
+	margin-bottom: 2em;
+	padding-top: 0;
+	text-align: right;
+	font-style: italic;
+}
+
+.comments {
+	border-top: thin dashed lightgray;
+	padding-top: 7px;
+}
+
+.comments input,
+.comments [contenteditable] {
+	background-color: transparent;
+	border: none;
+	border-bottom: thin solid gray;
+}
+
+.article {
+	font-size: smaller;
+}
