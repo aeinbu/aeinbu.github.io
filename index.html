@@ -8,21 +8,22 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/style.css">
-</head>
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"></head>
 <body>
 	<div class="container main">
+
 		<section class="no-columns">
-			<h1>Hi!</h1>
+			<h2>Hi!</h2>
 			<p>
-				Welcome to my small place on github pages.
+				Welcome to my humble place on Github</i>.
 			</p>
 			<p>I'm a developer and a course instructor. I teach courses on web development, JavaScript, C# and more.</p>
 			<p>
-				When I’m not working, I try to spend most my time with my family and friends. I might be skiing (mostly downhill), riding my motorcycle, be out photographing (you can see <a href="https://www.flickr.com/photos/aeinbu">some of my photos on Flickr</a>) or just doing even more programming.
+				When I’m not working, I try to spend most my time with my family and friends. I might be skiing (mostly downhill), riding my motorcycle, be
+				out photographing (you can see <a href="https://www.flickr.com/photos/aeinbu">some of my photos on Flickr</a>) or just doing even more programming.
 			</p>
 			<p>
-				Thanks for stopping by, hope you find something useful here or in one of my <a href="https://github.com/aeinbu">Github repos</a>!
+				Thanks for stopping by, hope you find something useful here or in one of my <a href="https://github.com/aeinbu"><i class="fab fa-github"></i> Github repos</a>!
 			</p>
 			<p class="signature">-Arjan Einbu</p>
 		</section>
@@ -95,10 +96,10 @@
 			<article class="border">
 				<h2>Commenting Test</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe voluptas incidunt atque. Quod accusamus id ducimus? Corrupti, dolorem reiciendis similique vitae repellendus unde culpa blanditiis illo voluptatum, ipsa eum?</p>
-				<comment-widget data-article-id="1"></comment-widget>
+				<x-comments article-id="1"></x-comments>
 			</article>
 
-			<article class="border">
+			<!-- <article class="border">
 				<h2>Commenting Example Layout</h2>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe voluptas incidunt atque. Quod accusamus id ducimus? Corrupti, dolorem reiciendis similique vitae repellendus unde culpa blanditiis illo voluptatum, ipsa eum?</p>
 				<section class="comments">
@@ -115,18 +116,18 @@
 						<div class="signature">-Donald Duck</div>
 					</article>
 					<article>
-						<p contenteditable>Your comment here!</p>
+						<p contenteditable="true">Your comment here!</p>
 						<div class="signature">
-							- <span contenteditable>Your name</span>
+							- <span contenteditable="true">Your name</span>
 						</div>
 						<button style="width: 100%">Submit</button>
 
 					</article>
 
 				</section>
-			</article>
+			</article> -->
 
-			<div class="github-widget" data-username="aeinbu"></div>
+			<!-- <div class="github-widget" data-username="aeinbu"></div> -->
 
 		</section>
 	</div>
@@ -134,8 +135,8 @@
 		Copyright &copy; 2018 Arjan Einbu.
 	</footer>
 	<script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.0.14/webcomponents-hi.js"></script>
-	<link rel="import" href="comment-widget/widget.html">
+	<script src="x-tag-polyfilled.min.js"></script>
+	<script src="widgets/x-comments.js"></script>
 </body>
 
 </html>

@@ -50,7 +50,7 @@ footer {
 
 
 .highlight {
-	background-color: coral;
+	background-color: lightcoral;
 	padding: 10px;
 }
 
@@ -123,18 +123,18 @@ blockquote:after {
 
 /* comment rules */
 
-.comments {
-	border-top: thin dashed lightgray;
-	padding-top: 7px;
+.title {
+	width: 100%;
+	color: lightcoral;
+	text-align: center;
 }
 
-.comments input,
-.comments [contenteditable] {
-	background-color: transparent;
-	border: none;
-	border-bottom: thin solid gray;
-}
-
-.comments>article {
+x-comments article {
 	font-size: smaller;
+}
+
+x-comments x-comment [contenteditable="true"] {
+	border: none;
+	color: lightgray;
+	border-bottom: thin solid lightgray;
 }
