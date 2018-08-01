@@ -8,7 +8,9 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"></head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
 <body>
 	<div class="container main">
 
@@ -19,8 +21,7 @@
 			</p>
 			<p>I'm a developer and a course instructor. I teach courses on web development, JavaScript, C# and more.</p>
 			<p>
-				When I’m not working, I try to spend most my time with my family and friends. I might be skiing (mostly downhill), riding my motorcycle, be
-				out photographing (you can see <a href="https://www.flickr.com/photos/aeinbu">some of my photos on Flickr</a>) or just doing even more programming.
+				When I’m not working, I try to spend most my time with my family and friends. I might be skiing (mostly downhill), riding my motorcycle, be out photographing (you can see <a href="https://www.flickr.com/photos/aeinbu">some of my photos on Flickr</a>) or just doing even more programming.
 			</p>
 			<p>
 				Thanks for stopping by, hope you find something useful here or in one of my <a href="https://github.com/aeinbu"><i class="fab fa-github"></i> Github repos</a>!
@@ -49,11 +50,18 @@
 				<p>
 					They come with tools for testing them in the development web server, and building the static assets to publish on your web server.
 				</p>
+				<x-comments article-id="0"></x-comments>
 			</article>
 
 			<article class="picframe">
 				<img src="https://farm8.staticflickr.com/7049/6915161542_d8154259f1.jpg" />
 				<div class="caption">Tarifa, España</div>
+			</article>
+
+			<article class="border">
+				<div style="height: 8em; color: #bbb;">
+					This space intentionally left blank ;)
+				</div>
 			</article>
 
 			<article class="picframe">
@@ -66,12 +74,6 @@
 					The good,<br>the bad and the<br>uglified
 				</blockquote>
 				#javascript
-			</article>
-
-			<article class="border">
-				<div style="height: 8em; color: #bbb;">
-					This space intentionally left blank ;)
-				</div>
 			</article>
 
 			<article class="border">
@@ -91,6 +93,7 @@
 				<p>
 					The layout and styling of this website are open sourced under the MIT lisence. You can find the <a href="https://github.com/aeinbu/aeinbu.github.io">source for it here</a>!
 				</p>
+				<x-comments article-id="2"></x-comments>
 			</article>
 
 			<article class="border">
@@ -135,8 +138,10 @@
 		Copyright &copy; 2018 Arjan Einbu.
 	</footer>
 	<script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
-	<script src="x-tag-polyfilled.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-loader.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.0.2/webcomponents-bundle.js"></script>
 	<script src="widgets/x-comments.js"></script>
+	<!-- <link rel="import" href="widgets/x-comments.html"> -->
 </body>
 
 </html>

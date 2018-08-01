@@ -129,11 +129,11 @@ blockquote:after {
 	text-align: center;
 }
 
-x-comments article {
+x-comments section {
 	font-size: smaller;
 }
 
-x-comments x-comment [contenteditable="true"] {
+x-comments article [contenteditable] {
 	border: none;
 	color: lightgray;
 	border-bottom: thin solid lightgray;

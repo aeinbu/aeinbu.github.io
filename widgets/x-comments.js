@@ -1,69 +1,84 @@
-var comments = [{
+
+var comments = {
+	0: [],
+	1: [{
 		name: "Peter Pan",
 		comment: `This is the first comment from json data`
 	},
 	{
 		name: "Donald Duck",
 		comment: `This is the second comment from json data`
-	}
-];
+	}],
+	2: [{
+		name: "Daisy Duck",
+		comment: "This is the third comment from json data"
+	}]
+};
 
-xtag.create('x-comments', class extends XTagElement {
-	constructor(){
-		super();
-	}
-	set 'articleId::attr'(value){
-		this.articleId = value;
 
-		console.log("*** starting timeout...");
-		setTimeout(this.callback.bind(this), 200);
-	}
+customElements.define("x-comments", class extends HTMLElement {
+	connectedCallback(){
+		this.sectionElmnt = document.createElement("section");
+		this.sectionElmnt.innerHTML = `<i class="title far fa-comments"></i>`;
+		this.appendChild(this.sectionElmnt);
 
-	callback(){
-		console.log("*** timeout callback...");
-		this.render();
+		this.articleId = this.getAttribute("article-id");
+		setTimeout(this.cb.bind(this), 200);	// ajax call to get comments for articleId
 	}
 
-	'::template' () {
-		return `
-			<div>
-				<i class="title far fa-comments"></i>
-				${ 
-					"".concat(...comments.map(({comment, name}) =>
-						`<x-comment name="${name}" comment="${comment}"></x-comment>`
-					))
-				}
-				<x-comment name="Your name" comment="Your comment..." empty="true"><x-comment>
-			</div>
-		`;
+	cb(){
+		comments[this.articleId].forEach(item => {
+			let commentElmnt = document.createElement("x-comment");
+			commentElmnt.setAttribute("name", item.name);
+			commentElmnt.setAttribute("comment", item.comment);
+			this.sectionElmnt.appendChild(commentElmnt);	
+		});
+
+		let newCommentElmnt = document.createElement("x-new-comment");
+		this.sectionElmnt.appendChild(newCommentElmnt);
+		
 	}
 });
+  
 
+customElements.define("x-comment", class extends HTMLElement
+{
+	connectedCallback(){
+		this.name = this.getAttribute("name");
+		this.comment = this.getAttribute("comment");
 
-xtag.create('x-comment', class extends XTagElement {
-	set 'name::attr'(value){
-		this.name = value;
-	}
-
-	set 'comment::attr'(value){
-		this.comment = value;
-	}
-
-	set 'empty::attr(Boolean)'(value){
-		this.isEmpty = value;
-	}
-
-	'::template(true)' () {
-		return `
+		this.innerHTML = `
 			<article>
-				<p class="comment" contenteditable="${this.isEmpty}">
+				<p class="comment">
 					${this.comment}
 				</p>
 				<div class="signature" >
-					- <span contenteditable="${this.isEmpty}">${this.name}</span>
+					- <span>${this.name}</span>
 				</div>
-				${ this.isEmpty? `<button style="width: 100%">Submit</button>`: ""}
 			</article>
 		`;
 	}
 });
+
+
+customElements.define("x-new-comment", class extends HTMLElement
+{
+	//TODO: handle button click -> add to comments and clear
+	connectedCallback(){
+		this.innerHTML = `
+			<article>
+				<p class="comment" contenteditable>
+					Your comment
+				</p>
+				<div class="signature" >
+					- <span contenteditable>Your name</span>
+				</div>
+				<button style="width: 100%;">Submit</button>
+			</article>
+		`;
+	}
+});
+
+
+
+
