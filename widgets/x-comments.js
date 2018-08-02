@@ -27,7 +27,11 @@ customElements.define("x-comments", class extends HTMLElement {
 	}
 
 	cb(){
-		comments[this.articleId].forEach(item => {
+		this.render(comments[this.articleId]);	//TODO: Data is incomming param. (Comes from AJAX or local storage)
+	}
+
+	render(comments){
+		comments.forEach(item => {
 			let commentElmnt = document.createElement("x-comment");
 			commentElmnt.setAttribute("name", item.name);
 			commentElmnt.setAttribute("comment", item.comment);
@@ -35,8 +39,15 @@ customElements.define("x-comments", class extends HTMLElement {
 		});
 
 		let newCommentElmnt = document.createElement("x-new-comment");
-		this.sectionElmnt.appendChild(newCommentElmnt);
+		newCommentElmnt.addEventListener("commentAdded", this.commentAdded.bind(this));
 		
+		this.sectionElmnt.appendChild(newCommentElmnt);
+	}
+
+	commentAdded(event){
+		console.log("*** x-comments - commentAdded", event.detail);
+		comments[this.articleId].push(event.detail);
+		// this.render(comments[this.articleId]);
 	}
 });
   
@@ -67,15 +78,23 @@ customElements.define("x-new-comment", class extends HTMLElement
 	connectedCallback(){
 		this.innerHTML = `
 			<article>
-				<p class="comment" contenteditable>
-					Your comment
-				</p>
+				<p class="comment" contenteditable>Your comment</p>
 				<div class="signature" >
-					- <span contenteditable>Your name</span>
+					- <span contenteditable class="name">Your name</span>
 				</div>
 				<button style="width: 100%;">Submit</button>
 			</article>
 		`;
+
+		var submitButton = this.getElementsByTagName("button")[0];
+		submitButton.addEventListener("click", this.submit.bind(this));
+	}
+
+	submit(){
+		let name = this.getElementsByClassName("name")[0].innerHTML;
+		let comment = this.getElementsByClassName("comment")[0].innerHTML;
+		let evt = new CustomEvent("commentAdded", {detail: { name, comment}});
+		this.dispatchEvent(evt);
 	}
 });
 
