@@ -26,11 +26,22 @@ customElements.define("x-comments", class extends HTMLElement {
 		setTimeout(this.cb.bind(this), 200);	// ajax call to get comments for articleId
 	}
 
+	attributeChangedCallback(name, oldValue, newValue){
+		// console.log("*** attributeChangedCallback", name, oldValue, newValue);
+		if(name == "article-id" && newValue != oldValue){
+			this.articleId = newValue;
+			
+			setTimeout(this.cb.bind(this), 200);	// ajax call to get comments for articleId
+		}
+	}
+
 	cb(){
 		this.render(comments[this.articleId]);	//TODO: Data is incomming param. (Comes from AJAX or local storage)
 	}
 
 	render(comments){
+		this.sectionElmnt.innerHTML = `<i class="title far fa-comments"></i>`;
+
 		comments.forEach(item => {
 			let commentElmnt = document.createElement("x-comment");
 			commentElmnt.setAttribute("name", item.name);
@@ -45,9 +56,8 @@ customElements.define("x-comments", class extends HTMLElement {
 	}
 
 	commentAdded(event){
-		console.log("*** x-comments - commentAdded", event.detail);
 		comments[this.articleId].push(event.detail);
-		// this.render(comments[this.articleId]);
+		this.render(comments[this.articleId]);
 	}
 });
   
@@ -74,13 +84,12 @@ customElements.define("x-comment", class extends HTMLElement
 
 customElements.define("x-new-comment", class extends HTMLElement
 {
-	//TODO: handle button click -> add to comments and clear
 	connectedCallback(){
 		this.innerHTML = `
 			<article>
-				<p class="comment" contenteditable>Your comment</p>
+				<p class="comment" contenteditable placeholder="Your comment"></p>
 				<div class="signature" >
-					- <span contenteditable class="name">Your name</span>
+					- <span contenteditable class="name" placeholder="Your name"></span>
 				</div>
 				<button style="width: 100%;">Submit</button>
 			</article>

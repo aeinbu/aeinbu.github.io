@@ -135,6 +135,20 @@ x-comments section {
 
 x-comments article [contenteditable] {
 	border: none;
-	color: lightgray;
+	/* color: black; */
 	border-bottom: thin solid lightgray;
+}
+
+/* From https://stackoverflow.com/questions/20726174/placeholder-for-contenteditable-div */
+[placeholder]:empty::before {
+    content: attr(placeholder);
+	color: lightgray;
+}
+
+[placeholder]:empty:focus::before {
+    content: attr(placeholder);		/* Modified from original answer */
+}
+
+[placeholder]:focus {
+	outline: none;
 }
