@@ -18,6 +18,7 @@ var comments = {
 
 customElements.define("x-comments", class extends HTMLElement {
 	connectedCallback(){
+		//TODO: Use document.createDocumentFragment instead...
 		this.sectionElmnt = document.createElement("section");
 		this.sectionElmnt.innerHTML = `<i class="title far fa-comments"></i>`;
 		this.appendChild(this.sectionElmnt);
