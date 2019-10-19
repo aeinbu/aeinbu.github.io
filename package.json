@@ -19,6 +19,6 @@
   "homepage": "https://github.com/aeinbu/aeinbu.github.io#readme",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.24.6"
+    "browser-sync": "^2.26.7"
   }
 }
