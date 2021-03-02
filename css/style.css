@@ -25,6 +25,26 @@ footer {
 	font-size: smaller;
 }
 
+ol {
+	padding-left: 1em;
+}
+ul {
+	padding-left: 1.4em;
+}
+
+li {
+	clear: both;
+}
+li+li {
+	margin-top: .5em;
+}
+
+.in-list-pic {
+	margin-left: -1.4em;
+	margin-right: .5em;
+	float: left;
+}
+
 .main {
 	background: #f8f8f8;
 }
