@@ -18,4 +18,4 @@ Then test it by navigating to http://localhost:3000.
 
 
 
-_Copyright &copy; 2018 Arjan Einbu_
+_Copyright &copy; 2018-2022 Arjan Einbu_
