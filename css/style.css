@@ -136,3 +136,11 @@ blockquote:after {
 	line-height: 0;
 	vertical-align: -0.4em;
 }
+
+pre.code,
+pre.csv,
+pre.fixed {
+	padding: 1em;
+	background: #eee;
+	border: thin solid lightgray;
+}
