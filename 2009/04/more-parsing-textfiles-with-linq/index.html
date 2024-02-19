@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing textfiles with LINQ</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container main">
+        <section class="no-columns">
+
+            <article class="block border">
+                <h2>
+                    More parsing textfiles with LINQ
+                </h2>
+                <small>Originally published on blog.einbu.no April 2. 2009</small>
+                <p>
+                    In a previous article, I described how to use LINQ when parsing a textfile.
+                <p>
+                </p>
+                    Following that train of thoughts further, I found a more elegant way of splitting the lines from the file into columns. Creating extension methods on top of IEnumerable<string> seems like a good idea! Something that could be used like this for a comma-separated file:
+                </p>
+                <pre class="code">
+from columns in reader.AsEnumerable().AsDelimited(delimiter)
+select ...
+</pre>
+                <p>
+                Or like this for a fixed position format:
+                </p>
+                <pre class="code">
+from columns in reader.AsEnumerable().AsFixed(width, width, width...)
+select ...
+</pre>
+                <p>
+                    The extension methods are added on to the IEnumerable&lt;string&gt; interface instead of directly to the TextReader class. This will make them even more flexible to use in more scenarios. Here's a sample implementation of them:
+                </p>
+                <pre class="code">
+public static class FileParsingExtentions
+{
+    public static IEnumerable<string[]> AsDelimited(this IEnumerable<string[]> strings, params char[] separators)
+    {
+        foreach (var line in strings.AsEnumerable())
+        {
+            yield return line.Split(separators);
+        }
+    }
+
+    public static IEnumerable<string[]> AsFixed(this IEnumerable<string[]> strings, params int[] widths)
+    {
+        foreach (var s in strings.AsEnumerable())
+        {
+            yield return s.AsFixed(widths);
+        }
+    }
+
+    public static string[] AsFixed(this string s, params int[] widths)
+    {
+        var columns = new string[widths.Length];
+        int startPos = 0;
+        int i = 0;
+        for (; i < widths.Length; i++)
+        {
+            columns[i] = s.Substring(startPos, widths[i]);
+            startPos += widths[i];
+        }
+
+        return columns;
+    }
+
+}
+</pre>
+                <p>
+                    So with this delimited test data:
+                </p>
+                <pre class="csv">
+id,description,x1,y1,x2,y2
+1,top,10,10,10,100
+2,left,10,100,100,100
+3,bottom,100,100,10,100
+4,right,10,100,10,10
+</pre>
+                <p>
+                we can use the AsDelimited extension method, and parse that file like this:
+                </p>
+                <pre class="code">
+using (var reader = new StreamReader("testdata-delimiters.txt"))
+{
+    var query = from columns in reader.AsEnumerable().AsDelimited(',')
+                select new
+                {
+                    SegmentId = columns[0],
+                    Description = columns[1],
+                    x1 = columns[2],
+                    y1 = columns[3],
+                    x2 = columns[4],
+                    y2 = columns[5],
+                };
+
+    foreach (var lineSegment in query.Skip(1))
+    {
+        Console.WriteLine(lineSegment);
+    }
+}
+</pre>
+                <p>
+                The same data in a fixed position format:
+                </p>
+                <pre class="fixed">
+1         top     10        10        10        100
+2         left    10        100       100       100
+3         bottom  100       100       10        100
+4         right   10        100       10        10
+</pre>
+                <p>
+                    Here we can use the AsFixed extension method passing in the column widths. The file is parsed with this code:
+                </p>
+                <pre class="code">
+using (var reader = new StreamReader("testdata-fixed.txt"))
+{
+    var query = from columns in reader.AsEnumerable().AsFixed(10, 10, 10, 10, 10, 10)
+                select new
+                {
+                    SegmentId = columns[0],
+                    Description = columns[1],
+                    x1 = columns[2],
+                    y1 = columns[3],
+                    x2 = columns[4],
+                    y2 = columns[5],
+                };
+
+    foreach (var lineSegment in query)
+    {
+        Console.WriteLine(lineSegment);
+    }
+}
+</pre>
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>

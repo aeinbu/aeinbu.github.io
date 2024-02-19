@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The trouble with delimited</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container main">
+        <section class="no-columns">
+
+            <article class="block border">
+                <h2>
+                    The trouble with delimited
+                </h2>
+                <small>Originally published on blog.einbu.no June 27. 2009</small>
+                <p>
+                    In this <a href="/2009/03/parsing-textfiles-with-linq/">previous article about parsing files</a>, I took a very simplistic approach to reading a delimited file. I used string.Split, which doesn't handle the use of quotes and usage of the delimiter character inside quotes.
+                </p>
+                <p>
+                    Well, <em>it turns out theres more to reading a delimited file than splitting at the delimiter...</em>
+                </p>
+                <p>
+                    Is this a problem? It depends on wether or not the file you're parsing contains quotes and you are expected to handle them correctly.
+                </p>
+                <p>
+                    Here's a sample file that demonstrates the problem:
+                </p>
+                <pre class="csv">
+id;productname;price
+1;apple;1.0
+2;something with a space in it;1.4
+3;"something in quotes";2.0
+4;"quotes and a ;";2.4
+5;"quotes containing single quotes like 'this'";3.0
+</pre>
+                <p>
+                    The string.Split approach will give us the double-quote-characters as part of our fields for each line from no. 3, and will give us 4 fields for no. 5 and 6. (All lines here have exactly 3 fields.)
+                </p>
+                <p>
+                    So how do we handle that correctly?
+                </p>
+                <p>
+                    We could write out own split method. Perhaps using regular expressions? Do I know all the rules I want to adhere to?
+                </p>
+                <p>
+                    Maybe it would be best if we can pick a piece of code thats already well tested to do that job for us. Well, as it turns out, Microsoft actually delivers a decent parser as part of the .net framework. Its in the Microsoft.VisualBasic assembly
+                (well hidden from us C# developers). Its the <a href="http://msdn.microsoft.com/en-us/library/microsoft.visualbasic.fileio.textfieldparser.aspx">TextFieldParser class</a> in the Microsoft.VisualBasic.FileIO namespace.
+                </p>
+                <p>
+                    Now, the code samples for this class in MSDN are all in VB, but that doesn't mean that we can't use it from C#. I've written a replacement for my previous GetSplittedLines extension method.
+                </p>
+                <pre class="code">
+public static class LinqToTextReader
+{
+    public static IEnumerable<string[]> GetSplittedLines(this TextReader reader, string[] delimiters)
+    {
+        using (var parser = new TextFieldParser(reader))
+        {
+            parser.Delimiters = delimiters;
+            string[] fields;
+            while ((fields = parser.ReadFields()) != null)
+            {
+                yield return fields;
+            }
+        }
+    }
+
+    public static IEnumerable<string[]> GetSplittedLines(this TextReader reader, string delimiter)
+    {
+        return GetSplittedLines(reader, new[] { delimiter });
+    }
+}
+</pre>
+                <p>
+                    Now we can use it to correctly handle all the lines in my sample text file like this:
+                </p>
+                <pre class="code">
+using (var reader = new StreamReader(@"testdata.txt"))
+{
+    var query = from line in reader.GetSplittedLines(';').Skip(1) //skip header row
+                select new {
+                    Firstname = columns[0],
+                    Lastname = columns[1],
+                    Age = columns[2]
+                }
+
+    //...do something with the results of query...
+}
+</pre>
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>

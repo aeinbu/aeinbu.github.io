@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing textfiles with LINQ</title>
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container main">
+        <section class="no-columns">
+
+            <article class="block border">
+                <h2>
+                    Parsing textfiles with LINQ (or LINQ-to-TextReader)
+                </h2>
+                <small>Originally published on blog.einbu.no March 27. 2009</small>
+                <p>
+                    Reading and parsing files is really no difficult task with the .NET framework. The System.IO namespace has several good classes to aid that task.
+                </p>
+                <p>
+                    We can use streams and readers to get the data from the file.
+                </p>
+                <p>
+                    When using a the StreamReader we state our intent in a imperative way. We create loops to iterate over all the lines, maybe after skipping a header row, complete with logic to tell when we reached the end of the file.
+                </p>
+                <p>
+                    LINQ shows us alternate ways to write code, introducing a more declarative coding paradigm. To use LINQ over the lines of a file, we can read all the lines in the file into a collection, and use LINQ over that collection. There's some overhead to this; the need to read the entire file upfront and to fit the entire file in memory at once.
+                </p>
+                <p>
+                    Can we combine the best of both worlds? Can we use LINQ over a file? No, there are no types dealing with files or streams in the .NET framework that support LINQ yet. But let's give it a try anyway:
+                </p>
+                <h3>
+                    Let's LINQ-enable the TextReader class.
+                </h3>
+                <p>
+                    We can use LINQ over any collection or type that implements IEnumerable, so I've written the AsEnumerable() extension method to the TextReader class:
+                </p>
+                <pre class="code">
+public static class LinqToTextReader
+{
+    public static IEnumerable AsEnumerable(this TextReader reader)
+    {
+        string line;
+        while ((line=reader.ReadLine()) != null)
+        {
+            yield return line;
+        }
+    }
+}
+</pre>
+                <p>
+                    This will let us use LINQ statements like:
+                </p>
+                <pre class="code">
+using (var reader = new StreamReader(@"testdata.txt"))
+{
+    var query = from line in reader.AsEnumerable().Skip(1) //skip header row
+                let columns = line.Split('\t')
+                select new {
+                    Firstname = columns[0],
+                    Lastname = columns[1],
+                    Age = columns[2]
+                };
+
+    //...do something with the results of query...
+}
+</pre>
+                <p>
+                    This is already simpler than looping over the reader.
+                </p>
+                <p>
+                    Most of the times I'll need to split the line into pieces as in the above example, so I created another extension method in the LinqToTextReader class that would return columns in a delimited textfile:
+                </p>
+                <pre class="code">
+public static IEnumerable GetSplittedLines(this TextReader reader, params char[] separators)
+{
+    foreach (var line in reader.AsEnumerable())
+    {
+        yield return line.Split(separators);
+    }
+}
+</pre>
+                <p>
+                    <s>
+                        (I just picked one of the overloads for string.Split, and a full-fledged LinqToTextReader class could implement the other six overloads as well.)
+                    </s>
+                </p>
+                <p>
+                    <em>
+                        UPDATE: You'll find a better and more robust solution in the <a href="/2009/06/the-trouble-with-delimited/">"The Trouble With Delimited"</a> post.
+                    </em>
+                </p>
+                <p>
+                    Now the same query as above can be written like this:
+                </p>
+                <pre class="code">
+using (var reader = new StreamReader(@"testdata.txt"))
+{
+    var query = from line in reader.GetSplittedLines('\t').Skip(1) //skip header row
+                select new {
+                    Firstname = columns[0],
+                    Lastname = columns[1],
+                    Age = columns[2]
+                }
+
+    //...do something with the results of query...
+}
+</pre>
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>
