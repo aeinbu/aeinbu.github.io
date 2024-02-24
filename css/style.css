@@ -28,6 +28,7 @@ footer {
 ol {
 	padding-left: 1em;
 }
+
 ul {
 	padding-left: 1.4em;
 }
@@ -35,6 +36,7 @@ ul {
 li {
 	clear: both;
 }
+
 li+li {
 	margin-top: .5em;
 }
@@ -59,6 +61,13 @@ li+li {
 }
 
 /* box decoration rules */
+
+.columns {
+	&>* {
+		margin: 7px 0;
+		padding: 0;
+	}
+}
 
 .border {
 	border: 2px solid lightcoral;
