@@ -23,8 +23,8 @@
 					workflow.
 				</p>
 				<p>
-					I’ve known about unit testing and unit test frameworks for maybe 7-8 years. I first tried using
-					it in a small project 5-6 years ago, but it is only in the last few years that I’ve learned how
+					I've known about unit testing and unit test frameworks for maybe 7-8 years. I first tried using
+					it in a small project 5-6 years ago, but it is only in the last few years that I've learned how
 					to do it right. (ie. found a way that works for me and my team…)
 				</p>
 				<p>
@@ -62,24 +62,24 @@
 					<li>
 						<h3>“Its dull to write tests.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						Well, I certainly don’t think so (anymore): I get a sense of accomplishment of seeing the
-						green bar indicating all OK. I guess this comes after you’ve seen the (green?) light! ;-).
+						Well, I certainly don't think so (anymore): I get a sense of accomplishment of seeing the
+						green bar indicating all OK. I guess this comes after you've seen the (green?) light! ;-).
 					</li>
 					<li>
-						<h3>“There’s no time to write tests.”</h3>
+						<h3>“There's no time to write tests.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
 						Proponents of unit testing will show how unit testing in the long run saves time. If this is
-						true, then we shouldn’t skip this testing thing that saves time…
+						true, then we shouldn't skip this testing thing that saves time…
 					</li>
 					<li>
 						<h3>“Laziness…”</h3>
 						<img src="./pics/confirmed.png" / title="confirmed" class="in-list-pic">
-						Ok, agree… Why do if you don’t have to…
+						Ok, agree… Why do if you don't have to…
 
 						See point 4 and 5.
 					</li>
 					<li>
-						<h3>“Management won’t let us.”/”Ignorant management.”</h3>
+						<h3>“Management won't let us.”/”Ignorant management.”</h3>
 						<img src="./pics/plausible.png" / title="plausible" class="in-list-pic">
 						Management has to buy into the idea of testing. Pointy Haired Bosses are no good here… (This
 						is probably the only point on this list that holds true as a point against unit testing…)
@@ -91,7 +91,7 @@
 						include a pat on the back, a price, a bonus or even just getting to keep your job. (ouch!)
 
 						The other kind of reward is that the code is easier to maintain. Having tests help you
-						confirm that fixing one thing doesn’t break some other thing. This is a long term reward.
+						confirm that fixing one thing doesn't break some other thing. This is a long term reward.
 					</li>
 					<li>
 						<h3>“The code will change, so the tests will fail in the (near) future.”</h3>
@@ -100,23 +100,23 @@
 						then it is OK to change the tests to align with the requirements.
 					</li>
 					<li>
-						<h3>“The test we wrote some time ago (probably) don’t work anymore.”</h3>
+						<h3>“The test we wrote some time ago (probably) don't work anymore.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						Then you’re doing it wrong. Everyone on the team must learn (and agree to) always run the
+						Then you're doing it wrong. Everyone on the team must learn (and agree to) always run the
 						test. Maybe many times a day. If requirements change, see point 6.
 					</li>
 					<li>
 						<h3>“Project is not important enough to warrant tests.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						Why bother doing the project at all? We’re already skipping unit tests because they’re not
+						Why bother doing the project at all? We're already skipping unit tests because they're not
 						important enough… Surely some other more important project needs the resources.
-						Or… Maybe not, but its a good learning experience to write the unit tests. And you’re ready
+						Or… Maybe not, but its a good learning experience to write the unit tests. And you're ready
 						when it becomes important enough.
 						If you already are really into unit testing then writing the tests comes naturally, and the
 						cost is minimal.
 					</li>
 					<li>
-						<h3>“Unit testing is also weak at finding problems that haven’t been considered.”</h3>
+						<h3>“Unit testing is also weak at finding problems that haven't been considered.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
 						True, but that is not the job of a unit test. Its job is to verify that the expectations you
 						have on your code still are true after changing the code. (See also point 10)
@@ -125,25 +125,25 @@
 						<h3>“It takes too much time and effort to think of all possible cases and write all those
 							tests.”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						You don’t need to. Just start by writing some tests and move on. (Typically test for edge
+						You don't need to. Just start by writing some tests and move on. (Typically test for edge
 						conditions, both in and out of range, valid and invalid arguments in.) If you later find you
-						should’ve tested for yet another condition you didn’t think of (because of a newly
+						should've tested for yet another condition you didn't think of (because of a newly
 						discovered problem?), write the test then.
 					</li>
 					<li>
 						<h3>“Methods not being easily testable” (due to database interaction or other external
 							resources.)</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						If its not easily testable, maybe the code isn’t written right. Maybe it should be broken
+						If its not easily testable, maybe the code isn't written right. Maybe it should be broken
 						down to smaller problems. You might need to use mock objects to simulate the external
-						resource. When you don’t want your unit tests touching that external resource, this is where
+						resource. When you don't want your unit tests touching that external resource, this is where
 						other test types, like integration tests, come in to play.
 					</li>
 					<li>
 						<h3>“Not feasible for big projects”</h3>
 						<img src="./pics/busted.png" / title="busted" class="in-list-pic">
-						Maybe not as an afterthought, no… But write test for those things you’re about to
-						fix/change/add. For every test that gets in there, you’ll have a better test suite. It won’t
+						Maybe not as an afterthought, no… But write test for those things you're about to
+						fix/change/add. For every test that gets in there, you'll have a better test suite. It won't
 						be complete, but “some” is better than “none”.
 						Doing it from the start should be little effort, even on a big project.
 					</li>
