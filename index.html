@@ -36,52 +36,47 @@
 		<section class="columns">
 
 			<article class="block border">
-				<h2>@aeinbu/aggregates</h2>
+				<h2>Users, groups and permissions cheatsheet</h2>
 				<p>
-					The npm package @aeinbu/aggregates contains some handy variations over min/max and sum functions to
-					use with <code>array.reduce(...)</code>.
+					You can find my <a href="https://gist.github.com/aeinbu/fb67eb4b805f44a069b7ea0a9d1eb78d">users,
+						groups and permissions cheatsheet here</a>.
 				</p>
-				<ul>
-					<li>
-						<a href="https://www.npmjs.com/package/@aeinbu/aggregates">Get it from npm</a>
-					</li>
-					<li>
-						<a href="https://github.com/aeinbu/aggregates">Check out the code on github</a>
-					</li>
-				</ul>
-				<p>
-					The package is both lightweight and non-intrusive. It is standalone and has no external
-					dependencies.
-				</p>
-				<p>
-					see the <a href="https://github.com/aeinbu/aggregates?tab=readme-ov-file#readme">README file</a> for
-					more information
-				</p>
+				<p>For macOS and Linux</p>
 			</article>
 
 			<article class="block border">
-				<h2>@aeinbu/groupby</h2>
+				<h2>Practical npm packages</h2>
 				<p>
-					The npm package @aeinbu/groupby contains some handy functions for doing "group by" type
-					transformations with <code>array.reduce(...)</code>.
+					These packages are lightweight, standalone and non-intrusive.
 				</p>
-				<ul>
-					<li>
-						<a href="https://www.npmjs.com/package/@aeinbu/groupby">Get it from npm</a>
-					</li>
-					<li>
-						<a href="https://github.com/aeinbu/groupby">Check out the code on github</a>
-					</li>
-				</ul>
+				<h3>@aeinbu/groupby</h3>
 				<p>
-					The package is both lightweight and non-intrusive. It is standalone and has no external
-					dependencies.
+					The npm package <a href="https://www.npmjs.com/package/@aeinbu/groupby">@aeinbu/groupby</a> contains
+					some handy functions for doing "group by" type transformations with <code>array.reduce(...)</code>.
+				</p>
+				Example:
+				<br />
+				<code>cities.reduce(groupBy(x => x.country), [])</code>
+				<p>
+					<a href="https://github.com/aeinbu/groupby">Check out the code and the full README on github</a>
+				</p>
+				<h3>@aeinbu/aggregates</h3>
+				<p>
+					The npm package <a href="https://www.npmjs.com/package/@aeinbu/aggregates">@aeinbu/aggregates</a>
+					contains some handy variations over min/max and sum functions to use with
+					<code>array.reduce(...)</code>.
+				</p>
+				Example:
+				<br />
+				<code>capitals.reduce(maxBy(x => x.population), null)</code>
+				<p>
+					<a href="https://github.com/aeinbu/aggregates">Check out the code and the full README on github</a>
+				</p>
+			</article>
 
-				</p>
-				<p>
-					see the <a href="https://github.com/aeinbu/groupby#aeinbugroupby">README file</a> for more
-					information
-				</p>
+			<article class="picframe">
+				<img src="https://farm8.staticflickr.com/7049/6915161542_d8154259f1.jpg" />
+				<div class="caption">Tarifa, España</div>
 			</article>
 
 			<article class="block border">
@@ -94,23 +89,6 @@
 						the instructions</a> and <a
 						href="https://gist.github.com/aeinbu/3f61a29906a17eaf55c150c71f5f2f97">get the snippets here</a>
 				</p>
-			</article>
-
-			<article class="picframe">
-				<img src="https://farm8.staticflickr.com/7049/6915161542_d8154259f1.jpg" />
-				<div class="caption">Tarifa, España</div>
-			</article>
-
-			<article class="block border">
-				<h2>How do I reset all settings changes in VS Code?</h2>
-				<ul>
-					<li>
-						<a
-							href="https://www.quora.com/How-do-I-reset-all-settings-changes-in-VS-Code/answer/Arjan-Einbu?__nsrc__=4&__snid3__=7002574443">
-							Read my answer on Quora
-						</a>
-					</li>
-				</ul>
 			</article>
 
 			<article class="block border">
@@ -129,12 +107,24 @@
 				</ul>
 			</article>
 
+			<article class="block border">
+				<h2>How do I reset all settings changes in VS Code?</h2>
+				<ul>
+					<li>
+						<a
+							href="https://www.quora.com/How-do-I-reset-all-settings-changes-in-VS-Code/answer/Arjan-Einbu?__nsrc__=4&__snid3__=7002574443">
+							Read my answer on Quora
+						</a>
+					</li>
+				</ul>
+			</article>
+
 			<article class="picframe">
 				<img src="/pics/lemming.jpg" />
 				<div class="caption">Lemmings: It turns out they aren't blue at all!</div>
 			</article>
 
-			<article class="highlight">
+			<article class="border">
 				<blockquote>
 					The good,<br>the bad and the<br>uglified
 				</blockquote>
@@ -177,6 +167,11 @@
 				</p>
 			</article>
 
+			<article class="picframe">
+				<img src="/pics/sladrespeil.jpg" />
+				<div class="caption">Me, driving in Nevada</div>
+			</article>
+
 			<article class="block border">
 				<small><em>Republished from 2009!</em></small>
 				<h2>Mythbusters: Unit-testing</h2>
@@ -197,7 +192,7 @@
 				</ul>
 			</article>
 
-			<article class="border">
+			<article class="highlight">
 				<blockquote>
 					Scientific progress goes boink!
 				</blockquote>
@@ -227,11 +222,6 @@
 					They come with tools for testing them in the development web server, and building the static assets
 					to publish on your web server.
 				</p>
-			</article>
-
-			<article class="picframe">
-				<img src="/pics/sladrespeil.jpg" />
-				<div class="caption">Me, driving in Nevada</div>
 			</article>
 
 		</section>
