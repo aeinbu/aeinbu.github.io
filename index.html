@@ -36,6 +36,27 @@
 		<section class="columns">
 
 			<article class="block border">
+				<h2>Different ways to search a git repo</h2>
+				<ul>
+					<li><a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt--Sltstringgt">git log -S
+							&lt;string&gt;</a> will look for the commits that change the number of occurrences. This
+						will find when something was added or removed, but not just moved to somewhere else inside the
+						same commit.</li>
+					<li><a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt---pickaxe-regex">git log -S
+							&lt;regex&gt; --pickaxe-regex</a> Same as above, but with regex support.</li>
+					<li><a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt--Gltregexgt">git log -G
+							&lt;regex&gt;</a> will look for the commits where a change involves this regex or text. It
+						will find when it has been moved, as well as added or removed.</li>
+					<li><a href="https://git-scm.com/docs/git-log#Documentation/git-log.txt---grepltpatterngt">git log
+							--grep=&lt;pattern&gt;</a> searches in commit messages only.</li>
+				</ul>
+				<a href="https://gist.github.com/aeinbu/7242425f954cb21d28074e079fb17559">Read my Gist about it</a>. 
+			</article>
+
+
+
+
+			<article class="block border">
 				<h2>Users, groups and permissions cheatsheet</h2>
 				<p>
 					You can find my <a href="https://gist.github.com/aeinbu/fb67eb4b805f44a069b7ea0a9d1eb78d">users,
@@ -91,6 +112,13 @@
 				</p>
 			</article>
 
+			<article class="highlight">
+				<blockquote>
+					Scientific progress goes boink!
+				</blockquote>
+				Calvin & Hobbes
+			</article>
+
 			<article class="block border">
 				<h2>Adding a new disk to my Linux computer</h2>
 				<p>
@@ -131,6 +159,20 @@
 				#javascript
 			</article>
 
+			<!-- <article class="border">
+				<div style="height: 8em; color: #bbb;">
+					This space intentionally left blank ;)
+				</div>
+			</article> -->
+
+			<article class="border">
+				<h2>Did you know?</h2>
+				<p>
+					The layout and styling of this website are open sourced under the MIT license. You can find the <a
+						href="https://github.com/aeinbu/aeinbu.github.io">source for it here</a>!
+				</p>
+			</article>
+
 			<article class="block border">
 				<h2>Running a docker container</h2>
 				<p>
@@ -150,20 +192,6 @@
 				<p>
 					I have used them on my mac, but the procedure should be the same for different Linuxes and Windows
 					versions too.
-				</p>
-			</article>
-
-			<article class="border">
-				<div style="height: 8em; color: #bbb;">
-					This space intentionally left blank ;)
-				</div>
-			</article>
-
-			<article class="border">
-				<h2>Did you know?</h2>
-				<p>
-					The layout and styling of this website are open sourced under the MIT license. You can find the <a
-						href="https://github.com/aeinbu/aeinbu.github.io">source for it here</a>!
 				</p>
 			</article>
 
@@ -190,13 +218,6 @@
 						<a href="./mythbusters-unittesting.html">Read the full article busting the myths!</a>
 					</li>
 				</ul>
-			</article>
-
-			<article class="highlight">
-				<blockquote>
-					Scientific progress goes boink!
-				</blockquote>
-				Calvin & Hobbes
 			</article>
 
 			<article class="block border">
