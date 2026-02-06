@@ -5,4 +5,4 @@ A responsive website template, with clear seperation of layout and styling (sepe
 You can view the website at http://aeinbu.github.io.
 
 
-_Copyright &copy; 2018-2024 Arjan Einbu_
+_Copyright &copy; 2018-2026 Arjan Einbu_
